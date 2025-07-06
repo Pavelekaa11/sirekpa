@@ -9,10 +9,13 @@ class BerandaController extends Controller
 {
     public function index()
     {
-        // tampilkan 3-5 pantai dengan rating keindahan tertinggi
-        $pantaiPopuler = Pantai::orderByDesc('keindahan')->limit(5)->get();
-
-        return view('index', compact('pantaiPopuler'));
+    $pantaiPopuler = Pantai::orderBy('keindahan', 'desc')
+                           ->take(5)
+                           ->get();
+    
+    $semuaPantai = Pantai::orderBy('nama', 'asc')->get();
+    
+    return view('index', compact('pantaiPopuler', 'semuaPantai'));
     }
 
     public function cari(Request $request)

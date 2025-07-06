@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Pantai; // <--- INI WAJIB UNTUK MENGAKSES MODEL
+use App\Models\Pantai;
 
 class PantaiSeeder extends Seeder
 {
@@ -12,7 +12,19 @@ class PantaiSeeder extends Seeder
      */
     public function run(): void
     {
-        Pantai::create([
+        $dataPantai = [
+            [
+                'nama' => 'Pantai Parangtritis',
+                'gambar' => 'parangtritis.jpeg',
+                'lokasi' => 'Bantul',
+                'deskripsi' => 'Pantai legendaris dengan pasir hitam dan legenda Nyi Roro Kidul.',
+                'harga_tiket' => 10000,
+                'keindahan' => 4,
+                'aksesibilitas' => 5,
+                'fasilitas' => 4,
+                'aktivitas' => 3,
+            ],
+            [
                 'nama' => 'Pantai Indrayanti',
                 'gambar' => 'indrayanti.jpeg',
                 'lokasi' => 'Gunungkidul',
@@ -34,7 +46,7 @@ class PantaiSeeder extends Seeder
                 'fasilitas' => 4,
                 'aktivitas' => 3,
             ],
-            [
+                        [
                 'nama' => 'Pantai Krakal',
                 'gambar' => 'krakal.jpeg',
                 'lokasi' => 'Gunungkidul',
@@ -232,7 +244,7 @@ class PantaiSeeder extends Seeder
                 'fasilitas' => 3,
                 'aktivitas' => 2,
             ],
-            [
+                        [
                 'nama' => 'Pantai Glagah',
                 'gambar' => 'glagah.jpeg',
                 'lokasi' => 'Kulon Progo',
@@ -275,6 +287,12 @@ class PantaiSeeder extends Seeder
                 'aksesibilitas' => 4,
                 'fasilitas' => 3,
                 'aktivitas' => 2,
-            ],);
+            ],
+            
+        ];
+
+        foreach ($dataPantai as $pantai) {
+            Pantai::create($pantai);
+        }
     }
 }
